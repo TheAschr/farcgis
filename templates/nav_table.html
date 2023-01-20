@@ -5,10 +5,10 @@
             <td class="breadcrumbs">
             {{range $directoryIndex, $directory := $.Directories}}
                 {{if eq $directoryIndex 0}}
-                <a href="{{makeFullUrl $.Directories $directory}}">Home</a>
+                <a href="{{ $.Directories $directory}}">Home</a>
                  &gt;  
                 {{end}}
-                <a href="{{makeFullUrl $.Directories $directory}}">{{$directory.Label}}</a>
+                <a href="{{ $.Directories $directory}}">{{$directory.Label}}</a>
                 {{if ne $directoryIndex (minus (len $.Directories) 1)}} 
                  &gt; 
                 {{end}}
