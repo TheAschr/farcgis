@@ -1,0 +1,160 @@
+{{define "body"}}
+<h2>{{$.Service.Name}} ({{$.Service.Type}})</h2>
+<div class="rbody">
+  <b>View In:</b>
+  &nbsp;&nbsp;
+  <a href="{{$.Route}}?f=jsapi" target="_blank">ArcGIS JavaScript</a>
+  &nbsp;&nbsp;
+  <a href="https://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer&amp;source=sd" target="_blank">ArcGIS Online Map Viewer</a>
+  &nbsp;&nbsp;
+  <a href="{{$.Route}}/kml/mapImage.kmz">ArcGIS Earth</a>
+  &nbsp;&nbsp;
+  <a href="{{$.Route}}?f=lyr&amp;v=9.3"target="_blank">ArcMap</a>
+  &nbsp;&nbsp;
+  <a href="{{$.Route}}?f=pitemx" target="_blank">ArcGIS Pro</a>
+  <br /><br />
+  <b>View Footprint In:</b>
+  &nbsp;&nbsp;
+  <a href="https://www.arcgis.com/home/webmap/viewer.html?featurecollection=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer%3Ff%3Djson%26option%3Dfootprints&amp;supportsProjection=true&amp;supportsJSONP=true" target="_blank">ArcGIS Online Map Viewer</a>
+  <br /><br />
+  <b>Service Description: </b> {{$.ServiceConfig.ServiceDescription}}<br /><br />
+  <b>Map Name: </b> Layers
+  <br /><br />
+  <a href="{{$.Route}}/legend">Legend</a>
+  <br /><br />
+  <a href="{{$.Route}}/layers">All Layers and Tables</a>
+  <br /><br />
+  <a href="{{$.Route}}/legend?dynamicLayers=%5B%5D&amp;">Dynamic Legend</a>
+  <br /><br />
+  <a href="{{$.Route}}/layers?dynamicLayers=%5B%5D&amp;">Dynamic All Layers</a>
+  <br /><br />
+  {{if len .ServiceConfig.Layers}}
+    <b>Layers: </b>
+    <ul>
+      {{range $layer := .ServiceConfig.Layers}}
+      <li>
+        <a href="{{$.Route}}/{{$layer.ID}}">{{$layer.Name}}</a>
+        ({{$layer.ID}})
+      </li>
+      {{end}}
+    </ul>
+  {{end}}
+  {{if len .ServiceConfig.Tables}}
+    <b>Tables: </b>
+    <ul>
+      {{range $table := .ServiceConfig.Tables}}
+      <li>
+        <a href="{{$.Route}}/{{$table.ID}}">{{$table.Name}}</a>
+        ({{$table.ID}})
+      </li>
+      {{end}}
+    </ul>
+  {{end}}
+  <b>Description: </b> {{$.ServiceConfig.Description}}
+  <br />
+  <br />
+  <b>Copyright Text: </b> {{$.ServiceConfig.CopyrightText}}
+  <br />
+  <br />
+  <b>Spatial Reference: </b> {{$.ServiceConfig.SpatialReference.WKID}}&nbsp;({{$.ServiceConfig.SpatialReference.LatestWKID}})
+  <br />
+  <br />
+  <b>Single Fused Map Cache: </b> false
+  <br />
+  <br />
+  <b>Initial Extent: </b>
+  <ul>
+    XMin: {{$.ServiceConfig.InitialExtent.XMin}}
+    <br />
+    YMin: {{$.ServiceConfig.InitialExtent.YMin}}
+    <br />
+    XMax: {{$.ServiceConfig.InitialExtent.XMax}}
+    <br />
+    YMax: {{$.ServiceConfig.InitialExtent.YMax}}
+    <br />
+    Spatial Reference: {{$.ServiceConfig.InitialExtent.SpatialReference.WKID}}&nbsp;({{$.ServiceConfig.InitialExtent.SpatialReference.LatestWKID}})
+    <br />
+    <br />
+  </ul>
+  <b>Full Extent: </b>
+  <ul>
+    XMin: {{$.ServiceConfig.FullExtent.XMin}}
+    <br />
+    YMin: {{$.ServiceConfig.FullExtent.YMin}}
+    <br />
+    XMax: {{$.ServiceConfig.FullExtent.XMax}}
+    <br />
+    YMax: {{$.ServiceConfig.FullExtent.YMax}}
+    <br />
+    Spatial Reference: {{$.ServiceConfig.FullExtent.SpatialReference.WKID}}&nbsp;({{$.ServiceConfig.FullExtent.SpatialReference.LatestWKID}})
+    <br />
+    <br />
+  </ul>
+  <b>Units: </b> {{$.ServiceConfig.Units}}
+  <br />
+  <br />
+  <b>Supported Image Format Types: </b> {{$.ServiceConfig.SupportedImageFormatTypes}}
+  <br />
+  <br />
+  <b>Document Info: </b>
+  <ul>
+    Title: {{$.ServiceConfig.DocumentInfo.Title}}
+    <br />
+    Author: {{$.ServiceConfig.DocumentInfo.Author}}
+    <br />
+    Comments: {{$.ServiceConfig.DocumentInfo.Comments}}
+    <br />
+    Subject: {{$.ServiceConfig.DocumentInfo.Subject}}
+    <br />
+    Category: {{$.ServiceConfig.DocumentInfo.Category}}
+    <br />
+    Keywords: {{$.ServiceConfig.DocumentInfo.Keywords}}
+    <br />
+    AntialiasingMode: {{$.ServiceConfig.DocumentInfo.AntialiasingMode}}
+    <br />
+    TextAntialiasingMode: {{$.ServiceConfig.DocumentInfo.TextAntialiasingMode}}
+    <br />
+  </ul>
+  <b>Supports Dynamic Layers: </b> {{$.ServiceConfig.SupportsDynamicLayers}}
+  <br />
+  <br />
+  <b>MaxRecordCount: </b> {{$.ServiceConfig.MaxRecordCount}}
+  <br />
+  <br />
+  <b>MaxImageHeight: </b> {{$.ServiceConfig.MaxImageHeight}}
+  <br />
+  <br />
+  <b>MaxImageWidth: </b> {{$.ServiceConfig.MaxImageWidth}}
+  <br />
+  <br />
+  <b>Supported Query Formats: </b> {{$.ServiceConfig.SupportedQueryFormats}}
+  <br />
+  <br />
+  <b>Supports Query Data Elements: </b>
+  <br />
+  <br />
+  <b>Min Scale: </b> {{$.ServiceConfig.MinScale}}
+  <br />
+  <br />
+  <b>Max Scale: </b> {{$.ServiceConfig.MaxScale}}
+  <br />
+  <br />
+  <b>Supports Datum Transformation: </b> {{$.ServiceConfig.SupportsDatumTransformation}}
+  <br />
+  <br />
+  <br />
+  <br />
+  <b>Child Resources</b>:&nbsp;&nbsp;<a href="{{$.Route}}/info">Info</a>&nbsp;&nbsp;<a href="{{$.Route}}/dynamicLayer">Dynamic Layer</a>
+  <br />
+  <br />
+  <b>Supported Operations</b>:
+  &nbsp;&nbsp;<a href="{{$.Route}}/export?bbox={{$.ServiceConfig.InitialExtent.XMin}},{{$.ServiceConfig.InitialExtent.YMin}},{{$.ServiceConfig.InitialExtent.XMax}},{{$.ServiceConfig.InitialExtent.YMax}}">Export Map</a>
+  &nbsp;&nbsp;<a href="{{$.Route}}/identify">Identify</a>
+  &nbsp;&nbsp;<a href="{{$.Route}}/queryDomains">QueryDomains</a>
+  &nbsp;&nbsp;<a href="{{$.Route}}/queryLegends">QueryLegends</a>
+  &nbsp;&nbsp;<a href="{{$.Route}}/find">Find</a>
+  &nbsp;&nbsp;<a href="{{$.Route}}?f=pjson&amp;returnUpdates=true&amp;">Return Updates</a>
+</div>
+<br />
+<br />
+{{end}}

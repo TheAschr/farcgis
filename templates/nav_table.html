@@ -1,0 +1,29 @@
+{{define "navTable"}}
+<table width="100%" class="navTable">
+    <tbody>
+        <tr valign="top">
+            <td class="breadcrumbs">
+            {{range $directoryIndex, $directory := $.Directories}}
+                {{if eq $directoryIndex 0}}
+                <a href="{{makeFullUrl $.Directories $directory}}">Home</a>
+                 &gt;  
+                {{end}}
+                <a href="{{makeFullUrl $.Directories $directory}}">{{$directory.Label}}</a>
+                {{if ne $directoryIndex (minus (len $.Directories) 1)}} 
+                 &gt; 
+                {{end}}
+            {{end}}
+            </td>
+            <td align="right">
+                <a href="/help" target="_blank">
+                    Help
+                </a>
+                 | 
+                 <a href="{{$.Route}}?f=help" target="_blank">
+                    API Reference
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{{end}}

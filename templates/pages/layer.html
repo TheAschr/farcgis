@@ -1,0 +1,168 @@
+{{define "body"}}
+<h2>Layer: Gaz_GovernmentUnits (ID: 0)</h2>
+<div class="rbody">
+<b>Name:</b> Gaz_GovernmentUnits<br><br>
+<b>Display Field:</b> county_name<br><br>
+<b>Type: </b> Feature Layer<br><br>
+<b>Geometry Type:</b> esriGeometryMultipoint<br><br>
+<b>Description: </b> <br><br>
+<b>Copyright Text: </b> <br><br>
+<b>Default Visibility: true</b> <br><br>
+<b>MaxRecordCount: </b> 1000<br><br>
+<b>Supported Query Formats: </b> JSON, geoJSON<br><br>
+<b>Min Scale: </b> 500000<br><br>
+<b>Max Scale: </b> 0<br><br>
+<b>Supports Advanced Queries: </b> true<br><br>
+<b>Supports Statistics: </b> true<br><br>
+<b>Has Labels: </b> false<br><br>
+<b>Can Modify Layer: </b> true<br><br>
+<b>Can Scale Symbols: </b> false<br><br>
+<b>Use Standardized Queries: </b> true<br><br>
+<b>Supports Datum Transformation: </b> true<br><br>
+<b>Extent:</b>
+<ul>
+XMin: -177.36138889972344<br>
+YMin: -85.37423332998225<br>
+XMax: 166.65027779963492<br>
+YMax: 69.72000122094715<br>
+Spatial Reference: 4269
+&nbsp;(4269)
+<br><br>
+</ul>
+<br>
+<b>Drawing Info: </b>
+<ul>
+<i>Renderer: </i>
+<ul><i>Simple Renderer:</i><br>
+<i>Symbol: </i> <ul><i>Style: </i> esriSMSCircle<br>
+<i>Color: </i> [0, 93, 130, 255] <br>
+<i>Size: </i> 4.0<br>
+<i>Angle: </i> 0.0<br>
+<i>XOffset: </i> 0<br>
+<i>YOffset: </i> 0<br>
+<i>Outline: </i>
+<ul>
+[0, 0, 0, 255] <i>Width: </i> 1</ul>
+</ul>
+<i>Label: </i> <br>
+<i>Description: </i> </ul>
+<i>Transparency: </i> 0<br>
+<i>Labeling Info: </i>
+<ul>
+</ul></ul>
+<b>Advanced Query Capabilities: </b>
+<ul>
+Supports Statistics: true<br>
+Supports OrderBy: true<br>
+Supports Distinct: true<br>
+Supports Pagination: true<br>
+Supports TrueCurve: true<br>
+Supports Returning Query Extent: true<br>
+Supports Query With Distance: true<br>
+Supports Sql Expression: true<br>
+Supports Query With ResultType: false<br>
+Supports Returning Geometry Centroid: false<br>
+</ul>
+<br>
+<b>HasZ: true</b><br><br>
+<b>HasM: false</b> <br><br>
+<b>Has Attachments: </b> false<br><br>
+<b>HTML Popup Type: </b> esriServerHTMLPopupTypeAsHTMLText<br><br>
+<b>Type ID Field: </b> null<br><br>
+<b>Fields: </b>
+<ul>
+<li>
+objectid<i>
+(
+type: esriFieldTypeOID, alias: OBJECTID
+)
+</i></li>
+<li>
+feature_id<i>
+(
+type: esriFieldTypeInteger, alias: Feature_ID
+)
+</i></li>
+<li>
+feature_permid<i>
+(
+type: esriFieldTypeString, alias: Feature_PermID, length: 40
+)
+</i></li>
+<li>
+unit_type<i>
+(
+type: esriFieldTypeString, alias: Unit_Type, length: 50
+)
+</i></li>
+<li>
+county_numeric<i>
+(
+type: esriFieldTypeInteger, alias: County_Numeric
+)
+</i></li>
+<li>
+county_name<i>
+(
+type: esriFieldTypeString, alias: County_Name, length: 100
+)
+</i></li>
+<li>
+state_numeric<i>
+(
+type: esriFieldTypeInteger, alias: State_Numeric
+)
+</i></li>
+<li>
+state_alpha<i>
+(
+type: esriFieldTypeString, alias: State_Alpha, length: 3
+)
+</i></li>
+<li>
+state_name<i>
+(
+type: esriFieldTypeString, alias: State_Name, length: 100
+)
+</i></li>
+<li>
+country_alpha<i>
+(
+type: esriFieldTypeString, alias: Country_Alpha, length: 2
+)
+</i></li>
+<li>
+country_name<i>
+(
+type: esriFieldTypeString, alias: Country_Name, length: 100
+)
+</i></li>
+<li>
+feature_name<i>
+(
+type: esriFieldTypeString, alias: Feature_Name, length: 100
+)
+</i></li>
+<li>
+globalid<i>
+(
+type: esriFieldTypeGlobalID, alias: GlobalID, length: 38
+)
+</i></li>
+<li>
+shape<i>
+(
+type: esriFieldTypeGeometry, alias: Shape
+)
+</i></li>
+</ul><br>
+<b>Supported Operations</b>:
+&nbsp;&nbsp;<a href="{{$.Route}}/query">Query</a>
+&nbsp;&nbsp;<a href="{{$.Route}}/queryAttachments">Query Attachments</a>
+&nbsp;&nbsp;<a href="{{$.Route}}/generateRenderer">Generate Renderer</a>
+&nbsp;&nbsp;<a href="{{$.Route}}?f=pjson&amp;returnUpdates=true&amp;">Return Updates</a><br><br>
+&nbsp;&nbsp;<a href="{{$.Route}}/iteminfo">Iteminfo</a>
+&nbsp;&nbsp;<a href="{{$.Route}}/thumbnail">Thumbnail</a>
+&nbsp;&nbsp;<a href="{{$.Route}}/metadata">Metadata</a></div>
+<br><br>
+{{end}}

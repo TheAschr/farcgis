@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <title>Folder: /</title>
+    <link
+      href="/arcgis/rest/static/main.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    {{template "userTable" .}}
+    {{template "navTable" .}}
+    <table>
+      <tbody>
+        <tr>
+          <td class="apiref">
+            <a href="?f=pjson" target="_blank">JSON</a>
+            |
+            <a href="{{$.Route}}?wsdl">SOAP</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    {{template "body" .}}    
+  </body>
+</html>

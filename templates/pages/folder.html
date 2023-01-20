@@ -1,0 +1,57 @@
+{{define "body"}}
+<h2>Folder: /</h2>
+<div class="rbody">
+  <b>Current Version: </b>{{.FolderConfig.CurrentVersion}}<br /><br />
+  <b>View Footprints In:</b>
+  &nbsp;&nbsp;<a
+    href="https://www.arcgis.com/home/webmap/viewer.html?featurecollection=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%3Ff%3Djson%26option%3Dfootprints&amp;supportsProjection=true&amp;supportsJSONP=true"
+    target="_blank"
+    >ArcGIS Online Map Viewer</a
+  >
+  <br /><br />
+  <b>Folders: </b>
+  <ul>
+    {{range $folder := .FolderConfig.Folders}}
+    <li><a href="{{$.Route}}/{{$folder}}">{{$folder}}</a></li>
+    {{end}}
+  </ul>
+  <b>Services: </b>
+  <ul>
+    {{if len .FolderConfig.Services}}
+        {{range $service := .FolderConfig.Services}}
+        <li>
+            <a href="{{$.RouteWithoutFolderName}}/{{$service.Name}}/{{$service.Type}}">
+                {{$service.Name}}
+            </a> ({{$service.Type}})
+        </li>
+        {{end}}
+    {{else}}
+        <i>None</i>
+    {{end}}
+  </ul>
+  <br /><br />
+  <b>Supported Interfaces:</b>
+  &nbsp;&nbsp;<a
+    target="_blank"
+    href="{{$.Route}}?f=pjson"
+    >REST</a
+  >
+  &nbsp;&nbsp;<a
+    target="_blank"
+    href="{{$.Route}}?wsdl"
+    >SOAP</a
+  >
+  &nbsp;&nbsp;<a
+    target="_blank"
+    href="{{$.Route}}?f=sitemap"
+    >Sitemap</a
+  >
+  &nbsp;&nbsp;<a
+    target="_blank"
+    href="{{$.Route}}?f=geositemap"
+    >Geo Sitemap</a
+  >
+  <br /><br />
+</div>
+<br /><br />
+{{end}}
