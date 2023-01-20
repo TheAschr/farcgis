@@ -1,4 +1,4 @@
-module arcserver-go
+module farcgis
 
 go 1.19
 

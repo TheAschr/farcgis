@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"net/url"
 
-	"arcserver-go/arcgis"
-	"arcserver-go/web"
+	"farcgis/arcgis"
+	"farcgis/web"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/joho/godotenv"

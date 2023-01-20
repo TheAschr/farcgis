@@ -1,4 +1,4 @@
-# arcserver-go
+# farcgis
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://code.chs.usgs.gov/aschrimpf/arcserver-go.git
+git remote add origin https://code.chs.usgs.gov/aschrimpf/farcgis.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://code.chs.usgs.gov/aschrimpf/arcserver-go/-/settings/integrations)
+- [ ] [Set up project integrations](https://code.chs.usgs.gov/aschrimpf/farcgis/-/settings/integrations)
 
 ## Collaborate with your team
 
