@@ -1,4 +1,6 @@
 {{define "body"}}
+{{$.Name}}
+{{$.URL.Path}}
 <h2>Folder: /</h2>
 <div class="rbody">
   <b>Current Version: </b>{{.FolderConfig.CurrentVersion}}<br /><br />
@@ -11,18 +13,18 @@
   <br /><br />
   <b>Folders: </b>
   <ul>
-    {{range $folder := .FolderConfig.Folders}}
-    <li><a href="{{$.Route}}/{{$folder}}">{{$folder}}</a></li>
+    {{range $folder := .Folders}}
+      <li>
+        <a href="{{$folder.URL.Path}}">{{$folder.Name}}</a>
+      </li>
     {{end}}
   </ul>
   <b>Services: </b>
   <ul>
-    {{if len .FolderConfig.Services}}
-        {{range $service := .FolderConfig.Services}}
+    {{if len .Services}}
+        {{range $service := .Services}}
         <li>
-            <a href="{{$.RouteWithoutFolderName}}/{{$service.Name}}/{{$service.Type}}">
-                {{$service.Name}}
-            </a> ({{$service.Type}})
+            <a href="{{$service.URL.Path}}">{{$service.Name}}</a> ({{$service.Type}})
         </li>
         {{end}}
     {{else}}
@@ -33,22 +35,22 @@
   <b>Supported Interfaces:</b>
   &nbsp;&nbsp;<a
     target="_blank"
-    href="{{$.Route}}?f=pjson"
+    href="{{$.URL.Path}}?f=pjson"
     >REST</a
   >
   &nbsp;&nbsp;<a
     target="_blank"
-    href="{{$.Route}}?wsdl"
+    href="{{$.URL.Path}}?wsdl"
     >SOAP</a
   >
   &nbsp;&nbsp;<a
     target="_blank"
-    href="{{$.Route}}?f=sitemap"
+    href="{{$.URL.Path}}?f=sitemap"
     >Sitemap</a
   >
   &nbsp;&nbsp;<a
     target="_blank"
-    href="{{$.Route}}?f=geositemap"
+    href="{{$.URL.Path}}?f=geositemap"
     >Geo Sitemap</a
   >
   <br /><br />

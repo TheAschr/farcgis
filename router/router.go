@@ -1,6 +1,7 @@
 package router
 
 import (
+	"encoding/json"
 	"net/http"
 
 	"farcgis/arcgis"
@@ -17,7 +18,16 @@ func New(serverInfo *arcgis.FolderInfo) (*chi.Mux, error) {
 		),
 	)
 
-	err := createFolderInfoRoutes(router, createTemplates(), serverInfo)
+	prettyJsonConfig, err := json.MarshalIndent(serverInfo, "", "  ")
+	if err != nil {
+		return nil, err
+	}
+
+	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write(prettyJsonConfig)
+	})
+
+	err = createFolderInfoRoutes(router, createTemplates(), serverInfo)
 	if err != nil {
 		return nil, err
 	}

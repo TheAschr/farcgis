@@ -6,6 +6,7 @@ import (
 	"farcgis/arcgis"
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -80,7 +81,10 @@ func createServiceRoutes(
 			switch format {
 			case "html":
 			case "":
-				template.ExecuteTemplate(w, "base.html", &serviceInfo)
+				err = template.ExecuteTemplate(w, "base.html", serviceInfo)
+				if err != nil {
+					log.Fatal(err)
+				}
 				break
 			case "json":
 				w.Write(jsonConfig)
@@ -102,12 +106,12 @@ func createFolderInfoRoutes(
 ) error {
 	template := (*templates)["folder"]
 
-	jsonConfig, err := json.Marshal(&folderInfo.FolderConfig)
+	jsonConfig, err := json.Marshal(folderInfo.FolderConfig)
 	if err != nil {
 		return err
 	}
 
-	prettyJsonConfig, err := json.MarshalIndent(&folderInfo.FolderConfig, "", "  ")
+	prettyJsonConfig, err := json.MarshalIndent(folderInfo.FolderConfig, "", "  ")
 	if err != nil {
 		return err
 	}
@@ -118,7 +122,10 @@ func createFolderInfoRoutes(
 			switch format {
 			case "html":
 			case "":
-				template.ExecuteTemplate(w, "base.html", &folderInfo)
+				err = template.ExecuteTemplate(w, "base.html", folderInfo)
+				if err != nil {
+					log.Fatal(err)
+				}
 				break
 			case "json":
 				w.Write(jsonConfig)
@@ -131,15 +138,13 @@ func createFolderInfoRoutes(
 	}
 
 	for _, serviceInfo := range folderInfo.Services {
-		err := createServiceRoutes(router, templates, &serviceInfo)
-		if err != nil {
+		if err := createServiceRoutes(router, templates, &serviceInfo); err != nil {
 			return err
 		}
 	}
 
 	for _, subFolderInfo := range folderInfo.Folders {
-		err := createFolderInfoRoutes(router, templates, &subFolderInfo)
-		if err != nil {
+		if err := createFolderInfoRoutes(router, templates, &subFolderInfo); err != nil {
 			return err
 		}
 	}

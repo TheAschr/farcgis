@@ -1,30 +1,34 @@
 package arcgis
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"net/url"
 	"strings"
 )
 
 type FolderInfo struct {
-	URL      url.URL
-	Name     string
-	Folders  []FolderInfo
-	Services []ServiceInfo
+	URL          url.URL       `json:"url"`
+	Name         string        `json:"name"`
+	Folders      []FolderInfo  `json:"folders"`
+	Services     []ServiceInfo `json:"services"`
+	ParentFolder *FolderInfo   `json:"-"`
 
-	FolderConfig FolderConfig
+	FolderConfig FolderConfig `json:"folderConfig"`
 }
 
 type ServiceInfo struct {
-	URL  url.URL
-	Name string
-	Type string
+	URL          url.URL     `json:"url"`
+	Name         string      `json:"name"`
+	Type         string      `json:"type"`
+	ParentFolder *FolderInfo `json:"-"`
 
-	MapServiceConfig      *MapServiceConfig
-	FeatureServiceConfig  *FeatureServiceConfig
-	GeometryServiceConfig *GeometryServiceConfig
-	GPServiceConfig       *GPServiceConfig
+	MapServiceConfig      *MapServiceConfig      `json:"mapServiceConfig"`
+	FeatureServiceConfig  *FeatureServiceConfig  `json:"featureServiceConfig"`
+	GeometryServiceConfig *GeometryServiceConfig `json:"geometryServiceConfig"`
+	GPServiceConfig       *GPServiceConfig       `json:"gpServiceConfig"`
 }
 
 func removeFolderFromServiceName(serviceName string) string {
@@ -54,13 +58,14 @@ func resolveFolderInfo(folderInfo *FolderInfo) error {
 			FolderConfig: *folderConfig,
 			Folders:      make([]FolderInfo, 0),
 			Services:     make([]ServiceInfo, 0),
+			ParentFolder: folderInfo,
 		}
 		err = resolveFolderInfo(&subFolderInfo)
 		if err != nil {
 			return err
 		}
 
-		folderInfo.Folders = append(subFolderInfo.Folders, subFolderInfo)
+		folderInfo.Folders = append(folderInfo.Folders, subFolderInfo)
 	}
 
 	// Services
@@ -81,6 +86,7 @@ func resolveFolderInfo(folderInfo *FolderInfo) error {
 				URL:                   *serviceURL,
 				Name:                  service.Name,
 				Type:                  service.Type,
+				ParentFolder:          folderInfo,
 				MapServiceConfig:      mapServiceConfig,
 				FeatureServiceConfig:  nil,
 				GeometryServiceConfig: nil,
@@ -96,6 +102,7 @@ func resolveFolderInfo(folderInfo *FolderInfo) error {
 				URL:                   *serviceURL,
 				Name:                  service.Name,
 				Type:                  service.Type,
+				ParentFolder:          folderInfo,
 				MapServiceConfig:      nil,
 				FeatureServiceConfig:  featureServiceConfig,
 				GeometryServiceConfig: nil,
@@ -111,6 +118,7 @@ func resolveFolderInfo(folderInfo *FolderInfo) error {
 				URL:                   *serviceURL,
 				Name:                  service.Name,
 				Type:                  service.Type,
+				ParentFolder:          folderInfo,
 				MapServiceConfig:      nil,
 				FeatureServiceConfig:  nil,
 				GeometryServiceConfig: geometryServiceConfig,
@@ -126,6 +134,7 @@ func resolveFolderInfo(folderInfo *FolderInfo) error {
 				URL:                   *serviceURL,
 				Name:                  service.Name,
 				Type:                  service.Type,
+				ParentFolder:          folderInfo,
 				MapServiceConfig:      nil,
 				FeatureServiceConfig:  nil,
 				GeometryServiceConfig: nil,
@@ -149,6 +158,7 @@ func FetchServerInfo(rootFolderURL *url.URL) (*FolderInfo, error) {
 	folderInfo := &FolderInfo{
 		URL:          *rootFolderURL,
 		Name:         "services",
+		ParentFolder: nil,
 		Services:     nil,
 		Folders:      nil,
 		FolderConfig: *folderConfig,
@@ -157,6 +167,58 @@ func FetchServerInfo(rootFolderURL *url.URL) (*FolderInfo, error) {
 	err = resolveFolderInfo(folderInfo)
 	if err != nil {
 		return nil, err
+	}
+
+	return folderInfo, nil
+}
+
+type Directory struct {
+	Label string
+	URL   url.URL
+}
+
+func (folderInfo *FolderInfo) FullDirectory() *[]Directory {
+	fullDirectory := make([]Directory, 0)
+
+	currFolderInfo := folderInfo
+
+	for ok := true; ok; ok = currFolderInfo != nil {
+		fullDirectory = append(fullDirectory, Directory{
+			Label: currFolderInfo.Name,
+			URL:   currFolderInfo.URL,
+		})
+		currFolderInfo = currFolderInfo.ParentFolder
+	}
+
+	return &fullDirectory
+}
+
+func (folderInfo *FolderInfo) SaveToFile(filename string) error {
+
+	prettyJsonConfig, err := json.MarshalIndent(&folderInfo, "", "  ")
+	if err != nil {
+		return errors.New(fmt.Sprintf("Unable to marshall folderInfo into json:\n\n%s", err))
+	}
+
+	err = ioutil.WriteFile(filename, prettyJsonConfig, 0644)
+	if err != nil {
+		return errors.New(fmt.Sprintf("Unable write folderInfo to file:%s\n\n%s", filename, err))
+	}
+
+	return nil
+}
+
+func LoadServerInfoFromFile(filename string) (*FolderInfo, error) {
+	file, err := ioutil.ReadFile(filename)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("Unable to read folderInfo from file: %s\n\n%s", filename, err))
+	}
+
+	folderInfo := &FolderInfo{}
+
+	err = json.Unmarshal(file, folderInfo)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("Unable to unmarshall folderInfo from file: %s\n\n%s", filename, err))
 	}
 
 	return folderInfo, nil

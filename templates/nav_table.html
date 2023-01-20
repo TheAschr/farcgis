@@ -3,13 +3,14 @@
     <tbody>
         <tr valign="top">
             <td class="breadcrumbs">
-            {{range $directoryIndex, $directory := $.Directories}}
+            {{$fullDirectory := .FullDirectory}}
+            {{range $directoryIndex, $directory := $fullDirectory}}
                 {{if eq $directoryIndex 0}}
-                <a href="{{ $.Directories $directory}}">Home</a>
+                <a href="{{$directory.URL.Path}}">Home</a>
                  &gt;  
                 {{end}}
-                <a href="{{ $.Directories $directory}}">{{$directory.Label}}</a>
-                {{if ne $directoryIndex (minus (len $.Directories) 1)}} 
+                <a href="{{$directory.URL.Path}}">{{$directory.Label}}</a>
+                {{if ne $directoryIndex (minus (len $fullDirectory) 1)}} 
                  &gt; 
                 {{end}}
             {{end}}
@@ -19,7 +20,7 @@
                     Help
                 </a>
                  | 
-                 <a href="{{$.Route}}?f=help" target="_blank">
+                 <a href="{{$.URL.Path}}?f=help" target="_blank">
                     API Reference
                 </a>
             </td>
