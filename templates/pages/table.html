@@ -1,0 +1,153 @@
+{{define "body"}}
+<h2>Layer: {{.Name}} (ID: {{.ID}})</h2>
+<div class="rbody">
+   <b>Name:</b> cells.cells.Cell_History<br><br>
+   <b>Display Field:</b> cell_hist_name<br><br>
+   <b>Type: </b> Table<br><br>
+   <b>Geometry Type:</b> N/A<br><br>
+   <b>Description: </b> <br><br>
+   <b>Copyright Text: </b> <br><br>
+   <b>Default Visibility: false</b> <br><br>
+   <b>MaxRecordCount: </b> 1000<br><br>
+   <b>Supported Query Formats: </b> JSON, geoJSON<br><br>
+   <b>Supports Advanced Queries: </b> true<br><br>
+   <b>Supports Statistics: </b> true<br><br>
+   <b>Use Standardized Queries: </b> true<br><br>
+   <b>Supports ValidateSQL: </b> true<br><br>
+   <b>Supports Calculate: </b> false<br><br>
+   <b>Extent:</b>
+   <ul></ul>
+   <br>
+   <b>Drawing Info: </b>
+   <ul>
+      N/A
+   </ul>
+   <b>Advanced Query Capabilities: </b>
+   <ul>
+      Supports Statistics: true<br>
+      Supports OrderBy: true<br>
+      Supports Distinct: true<br>
+      Supports Pagination: true<br>
+      Supports TrueCurve: true<br>
+      Supports Returning Query Extent: true<br>
+      Supports Query With Distance: true<br>
+      Supports Sql Expression: true<br>
+      Supports Query With ResultType: true<br>
+      Supports Returning Geometry Centroid: false<br>
+   </ul>
+   <br>
+   <b>HasZ: false</b><br><br>
+   <b>HasM: false</b> <br><br>
+   <b>Has Attachments: </b> false<br><br>
+   <b>HTML Popup Type: </b> esriServerHTMLPopupTypeNone<br><br>
+   <b>Type ID Field: </b> <br><br>
+   <b>Fields: </b>
+   <ul>
+      <li>
+         objectid<i>
+         (
+         type: esriFieldTypeOID, alias: OBJECTID, editable: false, nullable: false, defaultValue: null, modelName: OBJECTID
+         )
+         </i>
+      </li>
+      <li>
+         cell_id<i>
+         (
+         type: esriFieldTypeInteger, alias: cell_id, editable: true, nullable: true, defaultValue: null, modelName: cell_id
+         )
+         </i>
+      </li>
+      <li>
+         cell_hist_name<i>
+         (
+         type: esriFieldTypeString, alias: cell_hist_name, editable: true, nullable: true, length: 120, defaultValue: null, modelName: cell_hist_name
+         )
+         </i>
+      </li>
+      <li>
+         cell_history<i>
+         (
+         type: esriFieldTypeString, alias: cell_history, editable: true, nullable: true, length: 1000, defaultValue: null, modelName: cell_history
+         )
+         </i>
+      </li>
+      <li>
+         requestor<i>
+         (
+         type: esriFieldTypeString, alias: requestor, editable: true, nullable: true, length: 500, defaultValue: null, modelName: requestor
+         )
+         </i>
+      </li>
+      <li>
+         date_requested<i>
+         (
+         type: esriFieldTypeDate, alias: date_requested, editable: true, nullable: true, length: 8, defaultValue: null, modelName: date_requested
+         )
+         </i>
+      </li>
+      <li>
+         date_created<i>
+         (
+         type: esriFieldTypeDate, alias: date_created, editable: true, nullable: true, length: 8, defaultValue: null, modelName: date_created
+         )
+         </i>
+      </li>
+      <li>
+         created_by<i>
+         (
+         type: esriFieldTypeString, alias: created_by, editable: true, nullable: true, length: 50, defaultValue: null, modelName: created_by
+         )
+         </i>
+      </li>
+      <li>
+         globalid<i>
+         (
+         type: esriFieldTypeGlobalID, alias: GLOBALID, editable: false, nullable: false, length: 38, defaultValue: null, modelName: GLOBALID
+         )
+         </i>
+      </li>
+   </ul>
+   Templates: 
+   <ul>
+      <li>
+         Name: cells.cells.Cell_History<br>
+         Description: <br>
+         Prototype: 
+         <ul>
+            <i>created_by: </i> null<br>
+            <i>date_created: </i> null<br>
+            <i>cell_id: </i> null<br>
+            <i>cell_hist_name: </i> null<br>
+            <i>cell_history: </i> null<br>
+            <i>requestor: </i> null<br>
+            <i>date_requested: </i> null<br>
+         </ul>
+         Drawing Tool: esriFeatureEditToolNone
+      </li>
+   </ul>
+   <br>
+   <b>Capabilities: </b> Query,Create,Update,Delete,Uploads,Editing<br><br>
+   <b>Sync Can Return Changes: </b> true<br><br>
+   <b>Is Data Versioned: </b> true<br><br>
+   <b>Supports Rollback On Failure: </b> false<br><br>
+   <b>Supports ApplyEdits With Global Ids: </b> false<br><br>
+   <b>Supports Query With Historic Moment: </b> false<br><br>
+   <b>Supports Coordinates Quantization: </b> false<br><br>
+   <b>Supported Operations</b>:
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/query">Query</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/queryAttachments">Query Attachments</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/applyEdits">Apply Edits</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/addFeatures">Add Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/updateFeatures">Update Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/deleteFeatures">Delete Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/validateSQL">Validate SQL</a>
+   <!-- &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/queryTopFeatures">QueryTopFeatures</a> -->
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/generateRenderer">Generate Renderer</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7?f=pjson&amp;returnUpdates=true&amp;">Return Updates</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/iteminfo">Iteminfo</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/thumbnail">Thumbnail</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/7/metadata">Metadata</a>
+   <br><br>
+</div>
+<br><br>
+{{end}}

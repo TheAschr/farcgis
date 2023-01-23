@@ -12,6 +12,88 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+func createLayerRoutes(
+	router *chi.Mux,
+	templates *map[string]template.Template,
+	layerInfo *arcgis.LayerInfo,
+) error {
+	template := (*templates)["layer"]
+
+	jsonConfig, err := json.Marshal(&layerInfo.LayerConfig)
+	if err != nil {
+		return err
+	}
+
+	prettyJsonConfig, err := json.MarshalIndent(&layerInfo.LayerConfig, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	for _, route := range []string{layerInfo.URL.Path, fmt.Sprintf("%s/", layerInfo.URL.Path)} {
+		router.Get(route, func(w http.ResponseWriter, r *http.Request) {
+			format := r.URL.Query().Get("f")
+			switch format {
+			case "html":
+			case "":
+				err = template.ExecuteTemplate(w, "base.html", layerInfo)
+				if err != nil {
+					log.Fatal(err)
+				}
+				break
+			case "json":
+				w.Write(jsonConfig)
+				break
+			case "pjson":
+				w.Write(prettyJsonConfig)
+				break
+			}
+		})
+	}
+
+	return nil
+}
+
+func createTableRoutes(
+	router *chi.Mux,
+	templates *map[string]template.Template,
+	tableInfo *arcgis.TableInfo,
+) error {
+	template := (*templates)["table"]
+
+	jsonConfig, err := json.Marshal(&tableInfo.TableConfig)
+	if err != nil {
+		return err
+	}
+
+	prettyJsonConfig, err := json.MarshalIndent(&tableInfo.TableConfig, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	for _, route := range []string{tableInfo.URL.Path, fmt.Sprintf("%s/", tableInfo.URL.Path)} {
+		router.Get(route, func(w http.ResponseWriter, r *http.Request) {
+			format := r.URL.Query().Get("f")
+			switch format {
+			case "html":
+			case "":
+				err = template.ExecuteTemplate(w, "base.html", tableInfo)
+				if err != nil {
+					log.Fatal(err)
+				}
+				break
+			case "json":
+				w.Write(jsonConfig)
+				break
+			case "pjson":
+				w.Write(prettyJsonConfig)
+				break
+			}
+		})
+	}
+
+	return nil
+}
+
 func createServiceRoutes(
 	router *chi.Mux,
 	templates *map[string]template.Template,
@@ -94,6 +176,22 @@ func createServiceRoutes(
 				break
 			}
 		})
+	}
+
+	for _, layerInfo := range serviceInfo.Layers {
+		layerInfo := layerInfo
+		err = createLayerRoutes(router, templates, &layerInfo)
+		if err != nil {
+			return err
+		}
+	}
+
+	for _, tableInfo := range serviceInfo.Tables {
+		tableInfo := tableInfo
+		err = createTableRoutes(router, templates, &tableInfo)
+		if err != nil {
+			return err
+		}
 	}
 
 	return nil

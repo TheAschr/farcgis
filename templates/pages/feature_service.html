@@ -1,136 +1,136 @@
 {{define "body"}}
 <h2>{{$.Name}} ({{$.Type}})</h2>
 <div class="rbody">
-  <b>View In:</b>
-  &nbsp;&nbsp;
-  <a href="{{$.URL.Path}}?f=jsapi" target="_blank">ArcGIS JavaScript</a>
-  &nbsp;&nbsp;
-  <a href="https://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer&amp;source=sd" target="_blank">ArcGIS Online Map Viewer</a>
-  &nbsp;&nbsp;
-  <a href="{{$.URL.Path}}/kml/mapImage.kmz">ArcGIS Earth</a>
-  &nbsp;&nbsp;
-  <a href="{{$.URL.Path}}?f=lyr&amp;v=9.3"target="_blank">ArcMap</a>
-  &nbsp;&nbsp;
-  <a href="{{$.URL.Path}}?f=pitemx" target="_blank">ArcGIS Pro</a>
-  <br /><br />
-  <b>View Footprint In:</b>
-  &nbsp;&nbsp;
-  <a href="https://www.arcgis.com/home/webmap/viewer.html?featurecollection=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer%3Ff%3Djson%26option%3Dfootprints&amp;supportsProjection=true&amp;supportsJSONP=true" target="_blank">ArcGIS Online Map Viewer</a>
-  <br /><br />
-  <b>Service Description: </b> {{$.FeatureServiceConfig.ServiceDescription}}<br /><br />
-  <b>Map Name: </b> Layers
-  <br /><br />
-  <a href="{{$.URL.Path}}/legend">Legend</a>
-  <br /><br />
-  <a href="{{$.URL.Path}}/layers">All Layers and Tables</a>
-  <br /><br />
-  <a href="{{$.URL.Path}}/legend?dynamicLayers=%5B%5D&amp;">Dynamic Legend</a>
-  <br /><br />
-  <a href="{{$.URL.Path}}/layers?dynamicLayers=%5B%5D&amp;">Dynamic All Layers</a>
-  <br /><br />
-  {{if len .Layers}}
-    <b>Layers: </b>
-    <ul>
+   <b>View In:</b>
+   &nbsp;&nbsp;
+   <a href="{{$.URL.Path}}?f=jsapi" target="_blank">ArcGIS JavaScript</a>
+   &nbsp;&nbsp;
+   <a href="https://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer&amp;source=sd" target="_blank">ArcGIS Online Map Viewer</a>
+   &nbsp;&nbsp;
+   <a href="{{$.URL.Path}}/kml/mapImage.kmz">ArcGIS Earth</a>
+   &nbsp;&nbsp;
+   <a href="{{$.URL.Path}}?f=lyr&amp;v=9.3"target="_blank">ArcMap</a>
+   &nbsp;&nbsp;
+   <a href="{{$.URL.Path}}?f=pitemx" target="_blank">ArcGIS Pro</a>
+   <br /><br />
+   <b>View Footprint In:</b>
+   &nbsp;&nbsp;
+   <a href="https://www.arcgis.com/home/webmap/viewer.html?featurecollection=https%3A%2F%2Figskbthivmvwed4.cr.usgs.gov%2Farcgis%2Frest%2Fservices%2Fgaznames%2Fgaznames_govunits_default%2FMapServer%3Ff%3Djson%26option%3Dfootprints&amp;supportsProjection=true&amp;supportsJSONP=true" target="_blank">ArcGIS Online Map Viewer</a>
+   <br /><br />
+   <b>Service Description: </b> {{$.FeatureServiceConfig.ServiceDescription}}<br /><br />
+   <b>Map Name: </b> Layers
+   <br /><br />
+   <a href="{{$.URL.Path}}/legend">Legend</a>
+   <br /><br />
+   <a href="{{$.URL.Path}}/layers">All Layers and Tables</a>
+   <br /><br />
+   <a href="{{$.URL.Path}}/legend?dynamicLayers=%5B%5D&amp;">Dynamic Legend</a>
+   <br /><br />
+   <a href="{{$.URL.Path}}/layers?dynamicLayers=%5B%5D&amp;">Dynamic All Layers</a>
+   <br /><br />
+   {{if len .Layers}}
+   <b>Layers: </b>
+   <ul>
       {{range $layer := .Layers}}
       <li>
-        <a href="{{$layer.URL.Path}}">{{$layer.Name}}</a>
-        ({{$layer.ID}})
+         <a href="{{$layer.URL.Path}}">{{$layer.Name}}</a>
+         ({{$layer.ID}})
       </li>
       {{end}}
-    </ul>
-  {{end}}
-  {{if len .Tables}}
-    <b>Tables: </b>
-    <ul>
+   </ul>
+   {{end}}
+   {{if len .Tables}}
+   <b>Tables: </b>
+   <ul>
       {{range $table := .Tables}}
       <li>
-        <a href="{{$table.URL.Path}}">{{$table.Name}}</a>
-        ({{$table.ID}})
+         <a href="{{$table.URL.Path}}">{{$table.Name}}</a>
+         ({{$table.ID}})
       </li>
       {{end}}
-    </ul>
-  {{end}}
-  <b>Description: </b> {{$.FeatureServiceConfig.Description}}
-  <br />
-  <br />
-  <b>Copyright Text: </b> {{$.FeatureServiceConfig.CopyrightText}}
-  <br />
-  <br />
-  <b>Spatial Reference: </b> {{$.FeatureServiceConfig.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.SpatialReference.LatestWKID}})
-  <br />
-  <br />
-  <b>Initial Extent: </b>
-  <ul>
-    XMin: {{$.FeatureServiceConfig.InitialExtent.XMin}}
-    <br />
-    YMin: {{$.FeatureServiceConfig.InitialExtent.YMin}}
-    <br />
-    XMax: {{$.FeatureServiceConfig.InitialExtent.XMax}}
-    <br />
-    YMax: {{$.FeatureServiceConfig.InitialExtent.YMax}}
-    <br />
-    Spatial Reference: {{$.FeatureServiceConfig.InitialExtent.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.InitialExtent.SpatialReference.LatestWKID}})
-    <br />
-    <br />
-  </ul>
-  <b>Full Extent: </b>
-  <ul>
-    XMin: {{$.FeatureServiceConfig.FullExtent.XMin}}
-    <br />
-    YMin: {{$.FeatureServiceConfig.FullExtent.YMin}}
-    <br />
-    XMax: {{$.FeatureServiceConfig.FullExtent.XMax}}
-    <br />
-    YMax: {{$.FeatureServiceConfig.FullExtent.YMax}}
-    <br />
-    Spatial Reference: {{$.FeatureServiceConfig.FullExtent.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.FullExtent.SpatialReference.LatestWKID}})
-    <br />
-    <br />
-  </ul>
-  <b>Units: </b> {{$.FeatureServiceConfig.Units}}
-  <br />
-  <br />
-  <b>Document Info: </b>
-  <ul>
-    Title: {{$.FeatureServiceConfig.DocumentInfo.Title}}
-    <br />
-    Author:
-    <br />
-    Comments: {{$.FeatureServiceConfig.DocumentInfo.Comments}}
-    <br />
-    Subject: {{$.FeatureServiceConfig.DocumentInfo.Subject}}
-    <br />
-    Category: {{$.FeatureServiceConfig.DocumentInfo.Category}}
-    <br />
-    Keywords: {{$.FeatureServiceConfig.DocumentInfo.Keywords}}
-    <br />
-    AntialiasingMode: null
-    <br />
-    TextAntialiasingMode: null
-    <br />
-  </ul>
-  <b>Enable Z Defaults: </b> {{$.FeatureServiceConfig.EnableZDefaults}}
-  <br />
-  <br />
-  <b>Supports ApplyEdits With Global Ids: </b> {{$.FeatureServiceConfig.SupportsApplyEditsWithGlobalIds}}
-  <br />
-  <br />
-  <b>Only Allow TrueCurve Updates By TrueCurveClients: </b> {{$.FeatureServiceConfig.OnlyAllowTrueCurveUpdatesByTrueCurveClients}}
-  <br />
-  <br />
-  <b>Supports Dynamic Layers: </b> false
-  <br />
-  <br />
-  <b>Child Resources</b>:
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/info">Info</a>
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/uploads">Uploads</a>
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/relationships">Relationships</a>
-  <br><br>
-  <b>Supported Operations</b>:
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/query">Query</a>
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/queryContingentValues">Query Contingent Values</a>
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/queryDomains">QueryDomains</a>
-  &nbsp;&nbsp;<a href="{{$.URL.Path}}/applyEdits">Apply Edits</a>
+   </ul>
+   {{end}}
+   <b>Description: </b> {{$.FeatureServiceConfig.Description}}
+   <br />
+   <br />
+   <b>Copyright Text: </b> {{$.FeatureServiceConfig.CopyrightText}}
+   <br />
+   <br />
+   <b>Spatial Reference: </b> {{$.FeatureServiceConfig.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.SpatialReference.LatestWKID}})
+   <br />
+   <br />
+   <b>Initial Extent: </b>
+   <ul>
+      XMin: {{$.FeatureServiceConfig.InitialExtent.XMin}}
+      <br />
+      YMin: {{$.FeatureServiceConfig.InitialExtent.YMin}}
+      <br />
+      XMax: {{$.FeatureServiceConfig.InitialExtent.XMax}}
+      <br />
+      YMax: {{$.FeatureServiceConfig.InitialExtent.YMax}}
+      <br />
+      Spatial Reference: {{$.FeatureServiceConfig.InitialExtent.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.InitialExtent.SpatialReference.LatestWKID}})
+      <br />
+      <br />
+   </ul>
+   <b>Full Extent: </b>
+   <ul>
+      XMin: {{$.FeatureServiceConfig.FullExtent.XMin}}
+      <br />
+      YMin: {{$.FeatureServiceConfig.FullExtent.YMin}}
+      <br />
+      XMax: {{$.FeatureServiceConfig.FullExtent.XMax}}
+      <br />
+      YMax: {{$.FeatureServiceConfig.FullExtent.YMax}}
+      <br />
+      Spatial Reference: {{$.FeatureServiceConfig.FullExtent.SpatialReference.WKID}}&nbsp;({{$.FeatureServiceConfig.FullExtent.SpatialReference.LatestWKID}})
+      <br />
+      <br />
+   </ul>
+   <b>Units: </b> {{$.FeatureServiceConfig.Units}}
+   <br />
+   <br />
+   <b>Document Info: </b>
+   <ul>
+      Title: {{$.FeatureServiceConfig.DocumentInfo.Title}}
+      <br />
+      Author:
+      <br />
+      Comments: {{$.FeatureServiceConfig.DocumentInfo.Comments}}
+      <br />
+      Subject: {{$.FeatureServiceConfig.DocumentInfo.Subject}}
+      <br />
+      Category: {{$.FeatureServiceConfig.DocumentInfo.Category}}
+      <br />
+      Keywords: {{$.FeatureServiceConfig.DocumentInfo.Keywords}}
+      <br />
+      AntialiasingMode: null
+      <br />
+      TextAntialiasingMode: null
+      <br />
+   </ul>
+   <b>Enable Z Defaults: </b> {{$.FeatureServiceConfig.EnableZDefaults}}
+   <br />
+   <br />
+   <b>Supports ApplyEdits With Global Ids: </b> {{$.FeatureServiceConfig.SupportsApplyEditsWithGlobalIds}}
+   <br />
+   <br />
+   <b>Only Allow TrueCurve Updates By TrueCurveClients: </b> {{$.FeatureServiceConfig.OnlyAllowTrueCurveUpdatesByTrueCurveClients}}
+   <br />
+   <br />
+   <b>Supports Dynamic Layers: </b> false
+   <br />
+   <br />
+   <b>Child Resources</b>:
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/info">Info</a>
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/uploads">Uploads</a>
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/relationships">Relationships</a>
+   <br><br>
+   <b>Supported Operations</b>:
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/query">Query</a>
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/queryContingentValues">Query Contingent Values</a>
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/queryDomains">QueryDomains</a>
+   &nbsp;&nbsp;<a href="{{$.URL.Path}}/applyEdits">Apply Edits</a>
 </div>
 <br /><br />
 {{end}}

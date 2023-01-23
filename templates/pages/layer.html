@@ -1,168 +1,1508 @@
 {{define "body"}}
-<h2>Layer: Gaz_GovernmentUnits (ID: 0)</h2>
+<h2>Layer: {{.Name}} (ID: {{.ID}})</h2>
 <div class="rbody">
-<b>Name:</b> Gaz_GovernmentUnits<br><br>
-<b>Display Field:</b> county_name<br><br>
-<b>Type: </b> Feature Layer<br><br>
-<b>Geometry Type:</b> esriGeometryMultipoint<br><br>
-<b>Description: </b> <br><br>
-<b>Copyright Text: </b> <br><br>
-<b>Default Visibility: true</b> <br><br>
-<b>MaxRecordCount: </b> 1000<br><br>
-<b>Supported Query Formats: </b> JSON, geoJSON<br><br>
-<b>Min Scale: </b> 500000<br><br>
-<b>Max Scale: </b> 0<br><br>
-<b>Supports Advanced Queries: </b> true<br><br>
-<b>Supports Statistics: </b> true<br><br>
-<b>Has Labels: </b> false<br><br>
-<b>Can Modify Layer: </b> true<br><br>
-<b>Can Scale Symbols: </b> false<br><br>
-<b>Use Standardized Queries: </b> true<br><br>
-<b>Supports Datum Transformation: </b> true<br><br>
-<b>Extent:</b>
-<ul>
-XMin: -177.36138889972344<br>
-YMin: -85.37423332998225<br>
-XMax: 166.65027779963492<br>
-YMax: 69.72000122094715<br>
-Spatial Reference: 4269
-&nbsp;(4269)
-<br><br>
-</ul>
-<br>
-<b>Drawing Info: </b>
-<ul>
-<i>Renderer: </i>
-<ul><i>Simple Renderer:</i><br>
-<i>Symbol: </i> <ul><i>Style: </i> esriSMSCircle<br>
-<i>Color: </i> [0, 93, 130, 255] <br>
-<i>Size: </i> 4.0<br>
-<i>Angle: </i> 0.0<br>
-<i>XOffset: </i> 0<br>
-<i>YOffset: </i> 0<br>
-<i>Outline: </i>
-<ul>
-[0, 0, 0, 255] <i>Width: </i> 1</ul>
-</ul>
-<i>Label: </i> <br>
-<i>Description: </i> </ul>
-<i>Transparency: </i> 0<br>
-<i>Labeling Info: </i>
-<ul>
-</ul></ul>
-<b>Advanced Query Capabilities: </b>
-<ul>
-Supports Statistics: true<br>
-Supports OrderBy: true<br>
-Supports Distinct: true<br>
-Supports Pagination: true<br>
-Supports TrueCurve: true<br>
-Supports Returning Query Extent: true<br>
-Supports Query With Distance: true<br>
-Supports Sql Expression: true<br>
-Supports Query With ResultType: false<br>
-Supports Returning Geometry Centroid: false<br>
-</ul>
-<br>
-<b>HasZ: true</b><br><br>
-<b>HasM: false</b> <br><br>
-<b>Has Attachments: </b> false<br><br>
-<b>HTML Popup Type: </b> esriServerHTMLPopupTypeAsHTMLText<br><br>
-<b>Type ID Field: </b> null<br><br>
-<b>Fields: </b>
-<ul>
-<li>
-objectid<i>
-(
-type: esriFieldTypeOID, alias: OBJECTID
-)
-</i></li>
-<li>
-feature_id<i>
-(
-type: esriFieldTypeInteger, alias: Feature_ID
-)
-</i></li>
-<li>
-feature_permid<i>
-(
-type: esriFieldTypeString, alias: Feature_PermID, length: 40
-)
-</i></li>
-<li>
-unit_type<i>
-(
-type: esriFieldTypeString, alias: Unit_Type, length: 50
-)
-</i></li>
-<li>
-county_numeric<i>
-(
-type: esriFieldTypeInteger, alias: County_Numeric
-)
-</i></li>
-<li>
-county_name<i>
-(
-type: esriFieldTypeString, alias: County_Name, length: 100
-)
-</i></li>
-<li>
-state_numeric<i>
-(
-type: esriFieldTypeInteger, alias: State_Numeric
-)
-</i></li>
-<li>
-state_alpha<i>
-(
-type: esriFieldTypeString, alias: State_Alpha, length: 3
-)
-</i></li>
-<li>
-state_name<i>
-(
-type: esriFieldTypeString, alias: State_Name, length: 100
-)
-</i></li>
-<li>
-country_alpha<i>
-(
-type: esriFieldTypeString, alias: Country_Alpha, length: 2
-)
-</i></li>
-<li>
-country_name<i>
-(
-type: esriFieldTypeString, alias: Country_Name, length: 100
-)
-</i></li>
-<li>
-feature_name<i>
-(
-type: esriFieldTypeString, alias: Feature_Name, length: 100
-)
-</i></li>
-<li>
-globalid<i>
-(
-type: esriFieldTypeGlobalID, alias: GlobalID, length: 38
-)
-</i></li>
-<li>
-shape<i>
-(
-type: esriFieldTypeGeometry, alias: Shape
-)
-</i></li>
-</ul><br>
-<b>Supported Operations</b>:
-&nbsp;&nbsp;<a href="{{$.Route}}/query">Query</a>
-&nbsp;&nbsp;<a href="{{$.Route}}/queryAttachments">Query Attachments</a>
-&nbsp;&nbsp;<a href="{{$.Route}}/generateRenderer">Generate Renderer</a>
-&nbsp;&nbsp;<a href="{{$.Route}}?f=pjson&amp;returnUpdates=true&amp;">Return Updates</a><br><br>
-&nbsp;&nbsp;<a href="{{$.Route}}/iteminfo">Iteminfo</a>
-&nbsp;&nbsp;<a href="{{$.Route}}/thumbnail">Thumbnail</a>
-&nbsp;&nbsp;<a href="{{$.Route}}/metadata">Metadata</a></div>
+   <b>View In:</b>
+   &nbsp;&nbsp;<a href="http://www.arcgis.com/home/webmap/viewer.html?url=https%3A%2F%2Fedits-staging.nationalmap.gov%2Farcgis%2Frest%2Fservices%2Fcells%2Fcells_internal%2FFeatureServer%2F0&amp;source=sd" target="_blank">ArcGIS.com Map</a>
+   <br><br>  
+   <b>Name:</b> Cell_PolygonAll<br><br>
+   <b>Display Field:</b> cell_name<br><br>
+   <b>Type: </b> Feature Layer<br><br>
+   <b>Geometry Type:</b> esriGeometryPolygon<br><br>
+   <b>Description: </b> <br><br>
+   <b>Copyright Text: </b> <br><br>
+   <b>Default Visibility: false</b> <br><br>
+   <b>MaxRecordCount: </b> 1000<br><br>
+   <b>Supported Query Formats: </b> JSON, geoJSON<br><br>
+   <b>Min Scale: </b> 20000000<br><br>
+   <b>Max Scale: </b> 0<br><br>
+   <b>Supports Advanced Queries: </b> true<br><br>
+   <b>Supports Statistics: </b> true<br><br>
+   <b>Can Scale Symbols: </b> false<br><br>
+   <b>Use Standardized Queries: </b> true<br><br>
+   <b>Supports ValidateSQL: </b> true<br><br>
+   <b>Supports Calculate: </b> false<br><br>
+   <b>Supports Datum Transformation: </b> true<br><br>
+   <b>Extent:</b>
+   <ul>
+      XMin: -179.99999999999997<br>
+      YMin: -89.99999999999994<br>
+      XMax: 180.0000000000001<br>
+      YMax: 72.00000000000006<br>
+      Spatial Reference: 4269
+      &nbsp;(4269)
+      <br><br>
+   </ul>
+   <br>
+   <b>Drawing Info: </b>
+   <ul>
+      <i>Renderer: </i>
+      <ul>
+         <i>Unique Value Renderer:</i><br>
+         <i>Field 1: </i> cell_size<br>
+         <i>Field 2: </i> null<br>
+         <i>Field 3: </i> null<br>
+         <i>Field Delimiter: </i> ,<br>
+         <i>Default Symbol: </i> 
+         <ul>
+            <i>Style: </i> esriSFSForwardDiagonal<br>
+            <i>Color: </i> 
+            [197, 0, 255, 255] <br>
+            <i>Outline: </i>
+            <ul>
+               <i>Style: </i> esriSLSSolid<br>
+               <i>Color: </i> 
+               [0, 0, 0, 255] <br>
+               <i>Width: </i> 0
+            </ul>
+         </ul>
+         <i>Default Label: </i> Unassigned<br>
+         <i>UniqueValueInfos: </i>
+         <ul>
+            <li>
+               <i>Value: </i> 1<br>
+               <i>Label: </i> 3.75 X 3.75 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [0, 92, 230, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 2<br>
+               <i>Label: </i> 7.5 X 7.5 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [56, 168, 0, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 3<br>
+               <i>Label: </i> 7.5 X 15 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [255, 167, 127, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 4<br>
+               <i>Label: </i> 15 X 15 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [230, 152, 0, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 5<br>
+               <i>Label: </i> 30 X 30 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [197, 0, 255, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 6<br>
+               <i>Label: </i> 30 X 60 Minute<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [148, 204, 51, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 7<br>
+               <i>Label: </i> 1 X 1 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [168, 168, 0, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 8<br>
+               <i>Label: </i> 1 X 2 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 9<br>
+               <i>Label: </i> 1 X 3 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 10<br>
+               <i>Label: </i> 1 X 4 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 11<br>
+               <i>Label: </i> 2 X 1 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 12<br>
+               <i>Label: </i> 4 X 6 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 13<br>
+               <i>Label: </i> 4 X 10 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 14<br>
+               <i>Label: </i> 4 X 12 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 15<br>
+               <i>Label: </i> 4 X 20 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 16<br>
+               <i>Label: </i> 4 X 28 Degree<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [78, 78, 78, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+            <li>
+               <i>Value: </i> 99<br>
+               <i>Label: </i> None<br>
+               <i>Description: </i> <br>
+               <i>Symbol:</i>
+               <ul>
+                  <i>Style: </i> esriSFSSolid<br>
+                  <i>Color: </i> 
+                  [0, 0, 0, 0] <br>
+                  <i>Outline: </i>
+                  <ul>
+                     <i>Style: </i> esriSLSSolid<br>
+                     <i>Color: </i> 
+                     [255, 0, 0, 255] <br>
+                     <i>Width: </i> 2
+                  </ul>
+               </ul>
+            </li>
+         </ul>
+      </ul>
+      <i>Transparency: </i> 0<br>
+      <i>Labeling Info: </i>
+      <ul></ul>
+   </ul>
+   <b>Advanced Query Capabilities: </b>
+   <ul>
+      Supports Statistics: true<br>
+      Supports OrderBy: true<br>
+      Supports Distinct: true<br>
+      Supports Pagination: true<br>
+      Supports TrueCurve: true<br>
+      Supports Returning Query Extent: true<br>
+      Supports Query With Distance: true<br>
+      Supports Sql Expression: true<br>
+      Supports Query With ResultType: true<br>
+      Supports Returning Geometry Centroid: false<br>
+   </ul>
+   <br>
+   <b>HasZ: false</b><br><br>
+   <b>HasM: false</b> <br><br>
+   <b>Has Attachments: </b> false<br><br>
+   <b>HTML Popup Type: </b> esriServerHTMLPopupTypeAsHTMLText<br><br>
+   <b>Type ID Field: </b> cell_size<br><br>
+   <b>Fields: </b>
+   <ul>
+      <li>
+         objectid<i>
+         (
+         type: esriFieldTypeOID, alias: OBJECTID, editable: false, nullable: false, defaultValue: null, modelName: OBJECTID
+         )
+         </i>
+      </li>
+      <li>
+         cell_id<i>
+         (
+         type: esriFieldTypeInteger, alias: CELL_ID, editable: true, nullable: true, defaultValue: null, modelName: CELL_ID
+         )
+         </i>
+      </li>
+      <li>
+         cell_name<i>
+         (
+         type: esriFieldTypeString, alias: CELL_NAME, editable: true, nullable: true, length: 120, defaultValue: null, modelName: CELL_NAME
+         )
+         </i>
+      </li>
+      <li>
+         primary_state<i>
+         (
+         type: esriFieldTypeString, alias: PRIMARY_STATE, editable: true, nullable: true, length: 50, defaultValue: null, modelName: PRIMARY_STATE
+         )
+         </i>
+      </li>
+      <li>
+         cell_size<i>
+         (
+         type: esriFieldTypeInteger, alias: Cell_Size, editable: true, nullable: true, defaultValue: null, modelName: Cell_Size
+         ,  
+         <i>Coded Values: </i>
+         [1: 3.75 X 3.75 Minute]
+         , 
+         [2: 7.5 X 7.5 Minute]
+         , 
+         [3: 7.5 X 15 Minute]
+         <i>,  ...14 more...</i>
+         )
+         </i>
+      </li>
+      <li>
+         cell_type<i>
+         (
+         type: esriFieldTypeInteger, alias: Cell_Type, editable: true, nullable: true, defaultValue: null, modelName: Cell_Type
+         ,  
+         <i>Coded Values: </i>
+         [1: Standard On Grid]
+         , 
+         [2: Standard Off Grid]
+         , 
+         [3: Oversized]
+         <i>,  ...2 more...</i>
+         )
+         </i>
+      </li>
+      <li>
+         cell_mapcode<i>
+         (
+         type: esriFieldTypeString, alias: CELL_MAPCODE, editable: true, nullable: true, length: 8, defaultValue: null, modelName: CELL_MAPCODE
+         )
+         </i>
+      </li>
+      <li>
+         cell_allwater<i>
+         (
+         type: esriFieldTypeInteger, alias: Cell_AllWater, editable: true, nullable: true, defaultValue: null, modelName: Cell_AllWater
+         ,  
+         <i>Coded Values: </i>
+         [1: Yes]
+         , 
+         [2: No]
+         , 
+         [0: Unknown]
+         )
+         </i>
+      </li>
+      <li>
+         cell_description<i>
+         (
+         type: esriFieldTypeString, alias: CELL_DESCRIPTION, editable: true, nullable: true, length: 240, defaultValue: null, modelName: CELL_DESCRIPTION
+         )
+         </i>
+      </li>
+      <li>
+         cell_diacritic<i>
+         (
+         type: esriFieldTypeString, alias: CELL_DIACRITIC, editable: true, nullable: true, length: 100, defaultValue: null, modelName: CELL_DIACRITIC
+         )
+         </i>
+      </li>
+      <li>
+         latdd_north<i>
+         (
+         type: esriFieldTypeDouble, alias: LATDD_NORTH, editable: true, nullable: true, defaultValue: null, modelName: LATDD_NORTH
+         )
+         </i>
+      </li>
+      <li>
+         latdd_south<i>
+         (
+         type: esriFieldTypeDouble, alias: LATDD_SOUTH, editable: true, nullable: true, defaultValue: null, modelName: LATDD_SOUTH
+         )
+         </i>
+      </li>
+      <li>
+         longdd_east<i>
+         (
+         type: esriFieldTypeDouble, alias: LONGDD_EAST, editable: true, nullable: true, defaultValue: null, modelName: LONGDD_EAST
+         )
+         </i>
+      </li>
+      <li>
+         longdd_west<i>
+         (
+         type: esriFieldTypeDouble, alias: LONGDD_WEST, editable: true, nullable: true, defaultValue: null, modelName: LONGDD_WEST
+         )
+         </i>
+      </li>
+      <li>
+         date_created<i>
+         (
+         type: esriFieldTypeDate, alias: DATE_CREATED, editable: true, nullable: true, length: 8, defaultValue: null, modelName: DATE_CREATED
+         )
+         </i>
+      </li>
+      <li>
+         created_by<i>
+         (
+         type: esriFieldTypeString, alias: CREATED_BY, editable: true, nullable: true, length: 50, defaultValue: null, modelName: CREATED_BY
+         )
+         </i>
+      </li>
+      <li>
+         date_modified<i>
+         (
+         type: esriFieldTypeDate, alias: DATE_MODIFIED, editable: true, nullable: true, length: 8, defaultValue: null, modelName: DATE_MODIFIED
+         )
+         </i>
+      </li>
+      <li>
+         modified_by<i>
+         (
+         type: esriFieldTypeString, alias: MODIFIED_BY, editable: true, nullable: true, length: 50, defaultValue: null, modelName: MODIFIED_BY
+         )
+         </i>
+      </li>
+      <li>
+         isomit<i>
+         (
+         type: esriFieldTypeInteger, alias: IsOmit, editable: true, nullable: true, defaultValue: null, modelName: IsOmit
+         ,  
+         <i>Coded Values: </i>
+         [1: Yes]
+         , 
+         [2: No]
+         , 
+         [0: Unknown]
+         )
+         </i>
+      </li>
+      <li>
+         globalid<i>
+         (
+         type: esriFieldTypeGlobalID, alias: GLOBALID, editable: false, nullable: false, length: 38, defaultValue: null, modelName: GLOBALID
+         )
+         </i>
+      </li>
+      <li>
+         state_alpha<i>
+         (
+         type: esriFieldTypeString, alias: STATE_ALPHA, editable: true, nullable: true, length: 100, defaultValue: null, modelName: STATE_ALPHA
+         )
+         </i>
+      </li>
+      <li>
+         seq_govtunits<i>
+         (
+         type: esriFieldTypeString, alias: SEQ_GOVTUNITS, editable: true, nullable: true, length: 150, defaultValue: null, modelName: SEQ_GOVUNITS
+         )
+         </i>
+      </li>
+   </ul>
+   <b>Types: </b>
+   <ul>
+      ID: 1<br>
+      Name: 1<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 3.75 X 3.75 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 1<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 2<br>
+      Name: 2<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 7.5 X 7.5 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 2<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 3<br>
+      Name: 3<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 7.5 X 15 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 3<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 4<br>
+      Name: 4<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 15 X 15 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 4<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 5<br>
+      Name: 5<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 30 X 30 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 5<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 6<br>
+      Name: 6<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 30 X 60 Minute<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 6<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 7<br>
+      Name: 7<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 1 X 1 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 7<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 8<br>
+      Name: 8<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 1 X 2 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 8<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 9<br>
+      Name: 9<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 1 X 3 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 9<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 10<br>
+      Name: 10<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 1 X 4 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 10<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 11<br>
+      Name: 11<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 2 X 1 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 11<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 12<br>
+      Name: 12<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 4 X 6 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 12<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 13<br>
+      Name: 13<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 4 X 10 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 13<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 14<br>
+      Name: 14<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 4 X 12 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 14<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 15<br>
+      Name: 15<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 4 X 20 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 15<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 16<br>
+      Name: 16<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: 4 X 28 Degree<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 16<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+      ID: 99<br>
+      Name: 99<br>
+      Domains:
+      <ul>
+         <li>
+            cell_size:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_type:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            cell_allwater:<br>
+            <i>Inherited</i>
+         </li>
+         <li>
+            isomit:<br>
+            <i>Inherited</i>
+         </li>
+      </ul>
+      Templates:
+      <ul>
+         <li>
+            Name: None<br>
+            Description: <br>
+            Prototype: 
+            <ul>
+               <i>primary_state: </i> null<br>
+               <i>state_alpha: </i> null<br>
+               <i>cell_id: </i> null<br>
+               <i>cell_name: </i> null<br>
+               <i>cell_size: </i> 99<br>
+               <i>cell_type: </i> null<br>
+               <i>cell_mapcode: </i> null<br>
+               <i>cell_allwater: </i> null<br>
+               <i>cell_description: </i> null<br>
+               <i>cell_diacritic: </i> null<br>
+               <i>latdd_north: </i> null<br>
+               <i>latdd_south: </i> null<br>
+               <i>longdd_east: </i> null<br>
+               <i>longdd_west: </i> null<br>
+               <i>date_created: </i> null<br>
+               <i>created_by: </i> null<br>
+               <i>date_modified: </i> null<br>
+               <i>modified_by: </i> null<br>
+               <i>isomit: </i> null<br>
+               <i>seq_govtunits: </i> null<br>
+            </ul>
+            Drawing Tool: esriFeatureEditToolPolygon
+         </li>
+      </ul>
+      <hr>
+   </ul>
+   <br>
+   <b>Capabilities: </b> Query,Create,Update,Delete,Uploads,Editing<br><br>
+   <b>Sync Can Return Changes: </b> true<br><br>
+   <b>Is Data Versioned: </b> true<br><br>
+   <b>Supports Rollback On Failure: </b> false<br><br>
+   <b>Supports ApplyEdits With Global Ids: </b> false<br><br>
+   <b>Supports Query With Historic Moment: </b> false<br><br>
+   <b>Supports Coordinates Quantization: </b> true<br><br>
+   <b>Supported Operations</b>:
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/query">Query</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/queryAttachments">Query Attachments</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/applyEdits">Apply Edits</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/addFeatures">Add Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/updateFeatures">Update Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/deleteFeatures">Delete Features</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/validateSQL">Validate SQL</a>
+   <!-- &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/queryTopFeatures">QueryTopFeatures</a> -->
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/generateRenderer">Generate Renderer</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0?f=pjson&amp;returnUpdates=true&amp;">Return Updates</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/iteminfo">Iteminfo</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/thumbnail">Thumbnail</a>
+   &nbsp;&nbsp;<a href="/arcgis/rest/services/cells/cells_internal/FeatureServer/0/metadata">Metadata</a>
+   <br><br>
+</div>
 <br><br>
 {{end}}

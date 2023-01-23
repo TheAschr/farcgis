@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"net/http"
@@ -52,24 +51,8 @@ func main() {
 	}
 
 	// Get serverInfo
-	var serverInfo *arcgis.FolderInfo
-	_, err = os.Stat(serverInfoFilename)
-	if err == nil {
-		serverInfo, err = arcgis.LoadServerInfoFromFile(serverInfoFilename)
-		if err != nil {
-			log.Fatal(err)
-		}
-	} else if errors.Is(err, os.ErrNotExist) {
-		serverInfo, err = arcgis.FetchServerInfo(rootFolderURL)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		err = serverInfo.SaveToFile(serverInfoFilename)
-		if err != nil {
-			log.Fatal(err)
-		}
-	} else {
+	serverInfo, err := arcgis.FetchServerInfo(rootFolderURL)
+	if err != nil {
 		log.Fatal(err)
 	}
 

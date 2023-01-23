@@ -1,34 +1,35 @@
 package arcgis
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"net/url"
+	"sort"
 	"strconv"
 	"strings"
 )
 
 type LayerInfo struct {
-	URL               url.URL `json:"url"`
-	ID                int     `json:"id"`
-	Name              string  `json:"name"`
-	ParentLayerID     int     `json:"parentLayerId"`
-	DefaultVisibility bool    `json:"defaultVisibility"`
-	SubLayerIDs       *any    `json:"subLayerIds"`
-	MinScale          float64 `json:"minScale"`
-	MaxScale          float64 `json:"maxScale"`
-	Type              string  `json:"type"`
-	GeometryType      string  `json:"geometryType"`
+	URL               url.URL      `json:"url"`
+	ID                int          `json:"id"`
+	Name              string       `json:"name"`
+	ParentLayerID     int          `json:"parentLayerId"`
+	DefaultVisibility bool         `json:"defaultVisibility"`
+	SubLayerIDs       *any         `json:"subLayerIds"`
+	MinScale          float64      `json:"minScale"`
+	MaxScale          float64      `json:"maxScale"`
+	Type              string       `json:"type"`
+	GeometryType      string       `json:"geometryType"`
+	ParentService     *ServiceInfo `json:"-"`
 
 	LayerConfig *LayerConfig `json:"layerConfig"`
 }
 
 type TableInfo struct {
-	URL  url.URL `json:"url"`
-	ID   int     `json:"id"`
-	Name string  `json:"name"`
+	URL           url.URL      `json:"url"`
+	ID            int          `json:"id"`
+	Name          string       `json:"name"`
+	ParentService *ServiceInfo `json:"-"`
 
 	TableConfig *TableConfig `json:"featureTableConfig"`
 }
@@ -72,6 +73,10 @@ func resolveServiceInfo(serviceInfo *ServiceInfo) error {
 		serviceConfigLayers = &serviceInfo.FeatureServiceConfig.Layers
 	} else if serviceInfo.MapServiceConfig != nil {
 		serviceConfigLayers = &serviceInfo.MapServiceConfig.Layers
+	} else if serviceInfo.GeometryServiceConfig != nil {
+		serviceConfigLayers = &[]ServiceConfigLayer{}
+	} else if serviceInfo.GPServiceConfig != nil {
+		serviceConfigLayers = &[]ServiceConfigLayer{}
 	} else {
 		return errors.New(fmt.Sprintf("Unable to determine serviceConfig type.\nURL: %s", serviceInfo.URL.String()))
 	}
@@ -101,6 +106,7 @@ func resolveServiceInfo(serviceInfo *ServiceInfo) error {
 			Type:              layer.Type,
 			GeometryType:      layer.GeometryType,
 			LayerConfig:       layerConfig,
+			ParentService:     serviceInfo,
 		})
 	}
 
@@ -111,6 +117,8 @@ func resolveServiceInfo(serviceInfo *ServiceInfo) error {
 	} else if serviceInfo.MapServiceConfig != nil {
 		serviceConfigTables = &serviceInfo.MapServiceConfig.Tables
 	} else if serviceInfo.GeometryServiceConfig != nil {
+		serviceConfigTables = &[]ServiceConfigTable{}
+	} else if serviceInfo.GPServiceConfig != nil {
 		serviceConfigTables = &[]ServiceConfigTable{}
 	} else {
 		return errors.New(fmt.Sprintf("Unable to determine serviceConfig type.\nURL: %s", serviceInfo.URL.String()))
@@ -127,10 +135,11 @@ func resolveServiceInfo(serviceInfo *ServiceInfo) error {
 			return err
 		}
 		serviceInfo.Tables = append(serviceInfo.Tables, TableInfo{
-			URL:         *tableURL,
-			ID:          table.ID,
-			Name:        table.Name,
-			TableConfig: featureTableConfig,
+			URL:           *tableURL,
+			ID:            table.ID,
+			Name:          table.Name,
+			TableConfig:   featureTableConfig,
+			ParentService: serviceInfo,
 		})
 	}
 
@@ -316,6 +325,8 @@ func (folderInfo *FolderInfo) FullDirectory() *[]Directory {
 		currFolderInfo = currFolderInfo.ParentFolder
 	}
 
+	ReverseSlice(fullDirectory)
+
 	return &fullDirectory
 }
 
@@ -338,36 +349,75 @@ func (serviceInfo *ServiceInfo) FullDirectory() *[]Directory {
 		}
 	}
 
+	ReverseSlice(fullDirectory)
+
 	return &fullDirectory
 }
 
-func (folderInfo *FolderInfo) SaveToFile(filename string) error {
+func (layerInfo *LayerInfo) FullDirectory() *[]Directory {
+	fullDirectory := make([]Directory, 0)
 
-	prettyJsonConfig, err := json.MarshalIndent(&folderInfo, "", "  ")
-	if err != nil {
-		return errors.New(fmt.Sprintf("Unable to marshall folderInfo into json:\n\n%s", err))
+	fullDirectory = append(fullDirectory, Directory{
+		Label: layerInfo.Name,
+		URL:   layerInfo.URL,
+	})
+
+	serviceInfo := layerInfo.ParentService
+
+	fullDirectory = append(fullDirectory, Directory{
+		Label: serviceInfo.Name,
+		URL:   serviceInfo.URL,
+	})
+
+	currFolderInfo := serviceInfo.ParentFolder
+	if currFolderInfo != nil {
+		for ok := true; ok; ok = currFolderInfo != nil {
+			fullDirectory = append(fullDirectory, Directory{
+				Label: currFolderInfo.Name,
+				URL:   currFolderInfo.URL,
+			})
+			currFolderInfo = currFolderInfo.ParentFolder
+		}
 	}
 
-	err = ioutil.WriteFile(filename, prettyJsonConfig, 0644)
-	if err != nil {
-		return errors.New(fmt.Sprintf("Unable write folderInfo to file:%s\n\n%s", filename, err))
-	}
+	ReverseSlice(fullDirectory)
 
-	return nil
+	return &fullDirectory
 }
 
-func LoadServerInfoFromFile(filename string) (*FolderInfo, error) {
-	file, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Unable to read folderInfo from file: %s\n\n%s", filename, err))
+func (tableInfo *TableInfo) FullDirectory() *[]Directory {
+	fullDirectory := make([]Directory, 0)
+
+	fullDirectory = append(fullDirectory, Directory{
+		Label: tableInfo.Name,
+		URL:   tableInfo.URL,
+	})
+
+	serviceInfo := tableInfo.ParentService
+
+	fullDirectory = append(fullDirectory, Directory{
+		Label: serviceInfo.Name,
+		URL:   serviceInfo.URL,
+	})
+
+	currFolderInfo := serviceInfo.ParentFolder
+	if currFolderInfo != nil {
+		for ok := true; ok; ok = currFolderInfo != nil {
+			fullDirectory = append(fullDirectory, Directory{
+				Label: currFolderInfo.Name,
+				URL:   currFolderInfo.URL,
+			})
+			currFolderInfo = currFolderInfo.ParentFolder
+		}
 	}
 
-	folderInfo := &FolderInfo{}
+	ReverseSlice(fullDirectory)
 
-	err = json.Unmarshal(file, folderInfo)
-	if err != nil {
-		return nil, errors.New(fmt.Sprintf("Unable to unmarshall folderInfo from file: %s\n\n%s", filename, err))
-	}
+	return &fullDirectory
+}
 
-	return folderInfo, nil
+func ReverseSlice[T comparable](s []T) {
+	sort.SliceStable(s, func(i, j int) bool {
+		return i > j
+	})
 }

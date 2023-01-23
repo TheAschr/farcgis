@@ -9,6 +9,7 @@ var pages = map[string]string{
 	"featureService": "templates/pages/feature_service.html",
 	"mapService":     "templates/pages/map_service.html",
 	"layer":          "templates/pages/layer.html",
+	"table":          "templates/pages/table.html",
 }
 
 var base = []string{
