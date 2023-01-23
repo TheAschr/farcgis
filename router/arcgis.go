@@ -24,7 +24,7 @@ func createServiceRoutes(
 
 	switch serviceInfo.Type {
 	case "FeatureServer":
-		template = (*templates)["feature_service"]
+		template = (*templates)["featureService"]
 
 		if jsonConfig, err = json.Marshal(&serviceInfo.FeatureServiceConfig); err != nil {
 			return err
@@ -138,12 +138,14 @@ func createFolderInfoRoutes(
 	}
 
 	for _, serviceInfo := range folderInfo.Services {
+		serviceInfo := serviceInfo // Create a copy so that it doesn't change in route handler
 		if err := createServiceRoutes(router, templates, &serviceInfo); err != nil {
 			return err
 		}
 	}
 
 	for _, subFolderInfo := range folderInfo.Folders {
+		subFolderInfo := subFolderInfo // Create a copy so that it doesn't change in route handler
 		if err := createFolderInfoRoutes(router, templates, &subFolderInfo); err != nil {
 			return err
 		}

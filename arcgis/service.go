@@ -15,7 +15,6 @@ type ServiceConfigLayer struct {
 type ServiceConfigTable struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
-	Type string `json:"type"` // This might not exist?
 }
 
 type ServiceConfigExtent struct {

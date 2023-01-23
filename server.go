@@ -15,6 +15,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+const serverInfoFilename = "server-info.json"
+
 func expectEnv(envName string) string {
 	baseUrl := os.Getenv(envName)
 
@@ -26,10 +28,12 @@ func expectEnv(envName string) string {
 }
 
 func main() {
+	// Load env file
 	if err := godotenv.Load(); err != nil {
 		log.Fatalf("Unable to load .env file:%s", err)
 	}
 
+	// Parse environment variables
 	serverURL := expectEnv("SOURCE_ARCGIS_SERVER_URL")
 	if serverURL[len(serverURL)-1] == '/' {
 		serverURL = serverURL[:len(serverURL)-1]
@@ -41,15 +45,14 @@ func main() {
 		log.Fatalf("Invalid port: %s\n\n%s", portEnv, err)
 	}
 
+	// Get root server url
 	rootFolderURL, err := url.Parse(fmt.Sprintf("%s/arcgis/rest/services", serverURL))
 	if err != nil {
 		log.Fatalf("Invalid root folder url:\n\n%s", err)
 	}
 
-	const serverInfoFilename = "server-info.json"
-
+	// Get serverInfo
 	var serverInfo *arcgis.FolderInfo
-
 	_, err = os.Stat(serverInfoFilename)
 	if err == nil {
 		serverInfo, err = arcgis.LoadServerInfoFromFile(serverInfoFilename)
